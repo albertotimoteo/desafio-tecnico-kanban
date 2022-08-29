@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import DOMPurify from 'dompurify'
+import { marked } from 'marked'
 import {
   AddCardFunction,
   AlterCardFunction,
@@ -42,6 +44,13 @@ export const Card = ({
   const [mode, setMode] = useState<CardMode>('VIEW')
   const [titleEdit, setTitleEdit] = useState(title)
   const [contentEdit, setContentEdit] = useState(content)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (contentRef.current && content) {
+      contentRef.current.innerHTML = DOMPurify.sanitize(marked.parse(content))
+    }
+  }, [content, mode])
 
   return (
     <Container>
@@ -64,7 +73,7 @@ export const Card = ({
           onChange={event => setContentEdit(event.target.value)}
         />
       ) : (
-        <Content>{content}</Content>
+        <Content ref={contentRef}></Content>
       )}
       <HeaderFooter>
         <CardFooter

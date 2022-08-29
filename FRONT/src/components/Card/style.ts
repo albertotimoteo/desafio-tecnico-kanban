@@ -27,6 +27,11 @@ export const Title = styled.h3`
 export const Content = styled.section`
   font-size: ${fontSizes.body};
   overflow-y: auto;
+
+  code {
+    padding: 5px;
+    background: ${colors.gray2};
+  }
 `
 
 export const TitleInput = styled.input`
