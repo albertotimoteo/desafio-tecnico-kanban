@@ -1,11 +1,16 @@
-import { Card } from '../../types'
+import { CardProperties } from '../../types'
 import api from '../configuration'
 
-export const getCards = () => api.get('/cards')
+export const getCards = (): Promise<CardProperties[]> =>
+  api.get('/cards').then(response => response.data)
 
-export const addCard = (cardInfo: Card) => api.post('/cards', cardInfo)
+export const addCard = (
+  cardInfo: Pick<CardProperties, 'titulo' | 'lista' | 'conteudo'>
+): Promise<CardProperties> =>
+  api.post('/cards', cardInfo).then(response => response.data)
 
-export const changeCard = (cardInfo: Card) =>
-  api.put(`/cards/${cardInfo.id}`, cardInfo)
+export const changeCard = (cardInfo: CardProperties): Promise<CardProperties> =>
+  api.put(`/cards/${cardInfo.id}`, cardInfo).then(response => response.data)
 
-export const deleteCard = (id: string) => api.delete(`/cards/${id}`)
+export const deleteCard = (id: string): Promise<CardProperties[]> =>
+  api.delete(`/cards/${id}`).then(response => response.data)
