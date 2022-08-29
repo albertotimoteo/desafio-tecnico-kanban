@@ -4,6 +4,7 @@ import api from './services/configuration'
 import { AppWrapper } from './App.style'
 import { Kanban } from './pages/Kanban'
 import { Loading } from './components/Loading'
+import { ToastContainer, toast } from 'react-toastify'
 
 function App() {
   const [isLoading, setLoading] = useState(true)
@@ -15,13 +16,18 @@ function App() {
         api.defaults.headers.common.Authorization = `Bearer ${response.data}`
         setLoading(false)
       } catch (error) {
-        console.log(error)
+        toast.error('Erro ao fazer login.')
       }
     }
     doLogin()
   }, [])
 
-  return <AppWrapper>{isLoading ? <Loading /> : <Kanban />}</AppWrapper>
+  return (
+    <AppWrapper>
+      {isLoading ? <Loading /> : <Kanban />}{' '}
+      <ToastContainer position="bottom-right" />
+    </AppWrapper>
+  )
 }
 
 export default App

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+
 import { Column } from '../../components/Column'
 import {
   addCard,
@@ -9,6 +11,8 @@ import {
 import { CardProperties, GetTitlesOjbect, Lists } from '../../types'
 import { lists } from '../../utils/lists'
 import { Container } from './style'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 const titles: GetTitlesOjbect = {
   New: 'Novo',
@@ -26,7 +30,7 @@ export const Kanban = () => {
       const response = await getCards()
       setCards(response)
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao buscar os cards da api.')
     }
   }
 
@@ -46,7 +50,9 @@ export const Kanban = () => {
       })
       fetchCards()
     } catch (error) {
-      console.log(error)
+      toast.error(
+        'Erro ao adicionar o card. Confira os dados e tente novamente.'
+      )
     }
   }
 
@@ -65,7 +71,7 @@ export const Kanban = () => {
       })
       fetchCards()
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao alterar o card. Confira os dados e tente novamente.')
     }
   }
 
@@ -74,7 +80,7 @@ export const Kanban = () => {
       const response = await deleteCard(id)
       setCards(response)
     } catch (error) {
-      console.log(error)
+      toast.error('Erro ao deletar o card. Aguarde um pouco e tente novamente.')
     }
   }
 
@@ -92,6 +98,7 @@ export const Kanban = () => {
           }}
         />
       ))}
+      <ToastContainer position="bottom-right" />
     </Container>
   )
 }
