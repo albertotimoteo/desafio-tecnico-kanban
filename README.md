@@ -15,7 +15,7 @@ Esta solução foi desenvolvida utilizando as seguintes tecnologias
 - [React-Toastify](https://fkhadra.github.io/react-toastify/introduction)
 - [react-icons](https://react-icons.github.io/)
 
-Antes do início do trabalho no código, desenvolvi um Figma para me guiar no restante da programação Front. [link](https://www.figma.com/file/1iyiILSk1xgH1ZA7a5V9K0/Teste-t%C3%A9cnico-Kanban-Let's-Code?node-id=4%3A2)
+Antes do início do trabalho no código, desenvolvi um Figma para me guiar no restante da programação Front. [Link para o design](https://www.figma.com/file/1iyiILSk1xgH1ZA7a5V9K0/Teste-t%C3%A9cnico-Kanban-Let's-Code?node-id=4%3A2)
 
 ### Rodando o projeto
 
@@ -65,7 +65,7 @@ npm i
 npm run server
 ```
 
-**IMPORTANT**: Os passos 3 e 4 deverão estar rodando simultaneamente em terminais distintos.
+**IMPORTANTE**: Os passos 3 e 4 deverão estar rodando simultaneamente em terminais distintos.
 
 ### Observação:
 
