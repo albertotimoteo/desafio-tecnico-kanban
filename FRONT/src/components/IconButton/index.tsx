@@ -8,5 +8,7 @@ type IconButtonProps = {
 }
 
 export const IconButton = ({ icon, onClick }: IconButtonProps) => (
-  <Button onClick={onClick}>{icons[icon]}</Button>
+  <Button onClick={onClick} data-testid="button">
+    {icons[icon]}
+  </Button>
 )
